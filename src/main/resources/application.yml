@@ -9,14 +9,14 @@ gaea:
   # 实例演示开关
   demoEnabled: true
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: D:/ruoyi/uploadPath
+  profile: D:/abunio/uploadPath
   # 获取ip地址开关
   addressEnabled: false
 
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为8080
-  port: 8888
+  port: 8080
   servlet:
     # 应用的访问路径
     context-path: /
@@ -63,7 +63,7 @@ spring:
     # 密码
     password: 123456
     # 连接超时时间
-    timeout: 10s
+    timeout: 1s
     lettuce:
       pool:
         # 连接池中的最小空闲连接
@@ -121,7 +121,7 @@ gen:
   # 作者
   author: gaea
   # 默认生成包路径 system 需改成自己的模块名称 如 system monitor tool
-  packageName: com.gaea.project.system
+  packageName: com.gaea.project.house
   # 自动去除表前缀，默认是true
   autoRemovePre: false
   # 表前缀（生成类名不会包含表前缀，多个用逗号分隔）

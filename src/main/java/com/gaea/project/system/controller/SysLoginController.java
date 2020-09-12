@@ -58,7 +58,7 @@ public class SysLoginController
      * @param username 用户名
      * @return
      */
-    @PostMapping("/login/username")
+    @GetMapping("/login/username")
     public AjaxResult loginUsername(@RequestParam String username)
     {
         AjaxResult ajax = AjaxResult.success();
