@@ -22,15 +22,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectHouseClienteleList" parameterType="HouseClientele" resultMap="HouseClienteleResult">
         <include refid="selectHouseClienteleVo"/>
-        <where>  
-            <if test="clientele != null  and clientele != ''"> and clientele = #{clientele}</if>
-            <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
-            <if test="address != null  and address != ''"> and address = #{address}</if>
-            <if test="intention != null  and intention != ''"> and intention = #{intention}</if>
-            <if test="status != null  and status != ''"> and status = #{status}</if>
-            <if test="creatTime != null "> and creat_time = #{creatTime}</if>
-            <if test="modifiedTime != null "> and modified_time = #{modifiedTime}</if>
-        </where>
+        where  del_flag = '0'
+        <if test="clientele != null  and clientele != ''"> and clientele = #{clientele}</if>
+        <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
+        <if test="address != null  and address != ''"> and address = #{address}</if>
+        <if test="intention != null  and intention != ''"> and intention = #{intention}</if>
+        <if test="status != null  and status != ''"> and status = #{status}</if>
+        <if test="creatTime != null "> and creat_time = #{creatTime}</if>
+        <if test="modifiedTime != null "> and modified_time = #{modifiedTime}</if>
     </select>
     
     <select id="selectHouseClienteleById" parameterType="Long" resultMap="HouseClienteleResult">
@@ -77,15 +76,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </update>
 
-    <delete id="deleteHouseClienteleById" parameterType="Long">
-        delete from house_clientele where id = #{id}
-    </delete>
+    <update id="deleteHouseClienteleById" parameterType="Long">
+        update house_clientele  set
+        del_flag = '1'
+        where id = #{id}
+    </update>
 
-    <delete id="deleteHouseClienteleByIds" parameterType="String">
-        delete from house_clientele where id in 
+    <update id="deleteHouseClienteleByIds" parameterType="String">
+        update house_clientele  set
+        del_flag = '1' where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
-    </delete>
+    </update>
     
 </mapper>

@@ -1,5 +1,6 @@
 package com.gaea.project.house.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,8 @@ public class HouseLandlordServiceImpl implements IHouseLandlordService
     @Override
     public int insertHouseLandlord(HouseLandlord houseLandlord)
     {
+        houseLandlord.setCreatTime(new Date());
+        houseLandlord.setModifiedTime(new Date());
         return houseLandlordMapper.insertHouseLandlord(houseLandlord);
     }
 
@@ -64,6 +67,7 @@ public class HouseLandlordServiceImpl implements IHouseLandlordService
     @Override
     public int updateHouseLandlord(HouseLandlord houseLandlord)
     {
+        houseLandlord.setModifiedTime(new Date());
         return houseLandlordMapper.updateHouseLandlord(houseLandlord);
     }
 
